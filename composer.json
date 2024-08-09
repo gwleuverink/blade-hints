@@ -27,7 +27,8 @@
         "squizlabs/php_codesniffer": "^3",
         "tightenco/duster": "^3",
         "tightenco/tlint": "^9",
-        "orchestra/testbench": "^9"
+        "orchestra/testbench": "^9",
+        "pestphp/pest": "^2.35"
     },
     "extra": {
         "laravel": {
@@ -40,6 +41,13 @@
         "lint": "vendor/bin/duster lint",
         "fix": "vendor/bin/duster fix",
         "analyze": "vendor/bin/phpstan analyse",
-        "baseline": "vendor/bin/phpstan analyse --generate-baseline"
+        "baseline": "vendor/bin/phpstan analyse --generate-baseline",
+
+        "test": "@php vendor/bin/pest --bail"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     }
 }
