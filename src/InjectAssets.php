@@ -2,6 +2,7 @@
 
 namespace Leuverink\Glimpse;
 
+use Illuminate\Support\Arr;
 use Illuminate\Foundation\Http\Events\RequestHandled;
 
 class InjectAssets
@@ -9,6 +10,11 @@ class InjectAssets
     /** Injects a inline style tag containing Glimpse's CSS inside every full-page response */
     public function __invoke(RequestHandled $handled)
     {
+        // No need to inject anything when Glimpse is disabled
+        if (! config('glimpse.enabled')) {
+            return;
+        }
+
         $html = $handled->response->getContent();
 
         // Skip if request doesn't return a full page
@@ -32,7 +38,10 @@ class InjectAssets
             $this->injectAssets($html, <<< HTML
             <!--[GLIMPSE-ASSETS]-->
             <script type="module">{$js}</script>
-            <style>{$css}</style>
+            <style>
+                {$this->theme()}
+                {$css}
+            </style>
             <!--[ENDGLIMPSE]-->
             HTML)
         );
@@ -54,5 +63,14 @@ class InjectAssets
         return $html
             ->replaceMatches('/(<\s*html(?:\s[^>])*>)/i', '$1' . $core)
             ->toString();
+    }
+
+    protected function theme(): string
+    {
+        $variables = Arr::toCssStyles([
+            '--gl-border-color:' . config('glimpse.border_color'),
+        ]);
+
+        return ":root { {$variables} }";
     }
 }
