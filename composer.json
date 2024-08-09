@@ -1,0 +1,19 @@
+{
+    "name": "leuverink/glimpse",
+    "description": "Easily spot missing authorization checks in Blade",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Leuverink\\Glimpse\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "gwleuverink",
+            "email": "willem@leuver.ink"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
