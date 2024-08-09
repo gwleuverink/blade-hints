@@ -29,6 +29,13 @@
         "tightenco/tlint": "^9",
         "orchestra/testbench": "^9"
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Leuverink\\Glimpse\\ServiceProvider"
+            ]
+        }
+    },
     "scripts": {
         "lint": "vendor/bin/duster lint",
         "fix": "vendor/bin/duster fix",
