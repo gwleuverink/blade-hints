@@ -14,7 +14,7 @@ class ServiceProvider extends BaseServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/glimpse.php', 'glimpse');
 
-        $this->injectCss();
+        $this->injectAssets();
     }
 
     public function register()
@@ -37,11 +37,11 @@ class ServiceProvider extends BaseServiceProvider
         });
     }
 
-    protected function injectCss()
+    protected function injectAssets()
     {
         Event::listen(
             RequestHandled::class,
-            InjectCss::class,
+            InjectAssets::class,
         );
     }
 }
