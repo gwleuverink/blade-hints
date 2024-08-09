@@ -2,8 +2,10 @@
 
 namespace Leuverink\Glimpse;
 
+use Illuminate\Support\Facades\Event;
 use Illuminate\View\DynamicComponent;
 use Leuverink\Glimpse\View\BladeCompiler;
+use Illuminate\Foundation\Http\Events\RequestHandled;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
@@ -11,6 +13,8 @@ class ServiceProvider extends BaseServiceProvider
     public function boot()
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/glimpse.php', 'glimpse');
+
+        $this->injectCss();
     }
 
     public function register()
@@ -18,7 +22,7 @@ class ServiceProvider extends BaseServiceProvider
         $this->registerBladeCompiler();
     }
 
-    public function registerBladeCompiler()
+    protected function registerBladeCompiler()
     {
         $this->app->singleton('blade.compiler', function ($app) {
             return tap(new BladeCompiler(
@@ -31,5 +35,13 @@ class ServiceProvider extends BaseServiceProvider
                 $blade->component('dynamic-component', DynamicComponent::class);
             });
         });
+    }
+
+    protected function injectCss()
+    {
+        Event::listen(
+            RequestHandled::class,
+            InjectCss::class,
+        );
     }
 }

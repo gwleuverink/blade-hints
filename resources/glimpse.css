@@ -1,0 +1,12 @@
+.glimpse--if {
+  border: solid red 1px;
+  position: relative;
+}
+.glimpse__tooltip {
+  display: none;
+  position: absolute;
+  /* top: -1rem */
+}
+.glimpse:hover .glimpse__tooltip {
+  display: inline;
+}
