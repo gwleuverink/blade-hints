@@ -2,8 +2,29 @@
 
 namespace Leuverink\Glimpse\View;
 
+use Illuminate\View\Compilers\Concerns\CompilesConditionals as Original;
+
 trait CompilesConditionals
 {
+    use Original {
+        Original::compileAuth as originalCompileAuth;
+        Original::compileElseAuth as originalCompileElseAuth;
+        Original::compileEndAuth as originalCompileEndAuth;
+
+        Original::compileEnv as originalCompileEnv;
+        Original::compileEndEnv as originalCompileEndEnv;
+        Original::compileProduction as originalCompileProduction;
+        Original::compileEndProduction as originalCompileEndProduction;
+
+        Original::compileGuest as originalCompileGuest;
+        Original::compileElseGuest as originalCompileElseGuest;
+        Original::compileEndGuest as originalCompileEndGuest;
+    }
+
+    abstract private function openGlimpseWrapper(string $label): string;
+
+    abstract private function closeGlimpseWrapper(): string;
+
     /**
      * Compile the if-auth statements into valid PHP.
      *
@@ -12,6 +33,10 @@ trait CompilesConditionals
      */
     protected function compileAuth($guard = null)
     {
+        if (! config('glimpse.authentication_directives')) {
+            return $this->originalCompileAuth($guard);
+        }
+
         $guard = is_null($guard) ? '()' : $guard;
 
         return "<?php if(auth()->guard{$guard}->check()): ?>";
@@ -25,6 +50,10 @@ trait CompilesConditionals
      */
     protected function compileElseAuth($guard = null)
     {
+        if (! config('glimpse.authentication_directives')) {
+            return $this->originalCompileElseAuth($guard);
+        }
+
         $guard = is_null($guard) ? '()' : $guard;
 
         return "<?php elseif(auth()->guard{$guard}->check()): ?>";
@@ -37,6 +66,10 @@ trait CompilesConditionals
      */
     protected function compileEndAuth()
     {
+        if (! config('glimpse.authentication_directives')) {
+            return $this->originalCompileEndAuth();
+        }
+
         return '<?php endif; ?>';
     }
 
@@ -48,6 +81,10 @@ trait CompilesConditionals
      */
     protected function compileEnv($environments)
     {
+        if (! config('glimpse.environment_directives')) {
+            return $this->originalCompileEnv($environments);
+        }
+
         return "<?php if(app()->environment{$environments}): ?>";
     }
 
@@ -58,6 +95,10 @@ trait CompilesConditionals
      */
     protected function compileEndEnv()
     {
+        if (! config('glimpse.environment_directives')) {
+            return $this->originalCompileEndEnv();
+        }
+
         return '<?php endif; ?>';
     }
 
@@ -68,6 +109,10 @@ trait CompilesConditionals
      */
     protected function compileProduction()
     {
+        if (! config('glimpse.environment_directives')) {
+            return $this->originalCompileProduction();
+        }
+
         return "<?php if(app()->environment('production')): ?>";
     }
 
@@ -78,6 +123,10 @@ trait CompilesConditionals
      */
     protected function compileEndProduction()
     {
+        if (! config('glimpse.environment_directives')) {
+            return $this->originalCompileEndProduction();
+        }
+
         return '<?php endif; ?>';
     }
 
@@ -89,6 +138,10 @@ trait CompilesConditionals
      */
     protected function compileGuest($guard = null)
     {
+        if (! config('glimpse.guest_directives')) {
+            return $this->originalCompileGuest($guard);
+        }
+
         $guard = is_null($guard) ? '()' : $guard;
 
         return "<?php if(auth()->guard{$guard}->guest()): ?>";
@@ -102,6 +155,10 @@ trait CompilesConditionals
      */
     protected function compileElseGuest($guard = null)
     {
+        if (! config('glimpse.guest_directives')) {
+            return $this->originalCompileElseGuest($guard);
+        }
+
         $guard = is_null($guard) ? '()' : $guard;
 
         return "<?php elseif(auth()->guard{$guard}->guest()): ?>";
