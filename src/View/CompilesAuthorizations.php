@@ -30,6 +30,10 @@ trait CompilesAuthorizations
      */
     protected function compileCan($expression)
     {
+        if (! config('glimpse.authorization_directives')) {
+            return $this->originalCompileCan($expression);
+        }
+
         return $this->originalCompileCan($expression) . $this->openGlimpseWrapper("can{$expression}", 'authorization-if');
     }
 
@@ -41,6 +45,10 @@ trait CompilesAuthorizations
      */
     protected function compileCannot($expression)
     {
+        if (! config('glimpse.authorization_directives')) {
+            return $this->originalCompileCannot($expression);
+        }
+
         return $this->originalCompileCannot($expression) . $this->openGlimpseWrapper("cannot{$expression}", 'authorization-if');
     }
 
@@ -52,6 +60,10 @@ trait CompilesAuthorizations
      */
     protected function compileCanany($expression)
     {
+        if (! config('glimpse.authorization_directives')) {
+            return $this->originalCompileCanany($expression);
+        }
+
         return $this->originalCompileCanany($expression) . $this->openGlimpseWrapper("canany{$expression}", 'authorization-if');
     }
 
@@ -63,7 +75,11 @@ trait CompilesAuthorizations
      */
     protected function compileElsecan($expression)
     {
-        return $this->closeGlimpseWrapper() . $this->originalCompileElseCan($expression) . $this->openGlimpseWrapper("elsecan{$expression}", 'authorization-else');
+        if (! config('glimpse.authorization_directives')) {
+            return $this->originalCompileElsecan($expression);
+        }
+
+        return $this->closeGlimpseWrapper() . $this->originalCompileElsecan($expression) . $this->openGlimpseWrapper("elsecan{$expression}", 'authorization-else');
     }
 
     /**
@@ -74,7 +90,11 @@ trait CompilesAuthorizations
      */
     protected function compileElsecannot($expression)
     {
-        return $this->closeGlimpseWrapper() . $this->originalCompileElseCannot($expression) . $this->openGlimpseWrapper("elsecannot{$expression}", 'authorization-else');
+        if (! config('glimpse.authorization_directives')) {
+            return $this->originalCompileElsecannot($expression);
+        }
+
+        return $this->closeGlimpseWrapper() . $this->originalCompileElsecannot($expression) . $this->openGlimpseWrapper("elsecannot{$expression}", 'authorization-else');
     }
 
     /**
@@ -85,7 +105,11 @@ trait CompilesAuthorizations
      */
     protected function compileElsecanany($expression)
     {
-        return $this->closeGlimpseWrapper() . $this->originalCompileElseCanany($expression) . $this->openGlimpseWrapper("elsecanany{$expression}", 'authorization-else');
+        if (! config('glimpse.authorization_directives')) {
+            return $this->originalCompileElsecanany($expression);
+        }
+
+        return $this->closeGlimpseWrapper() . $this->originalCompileElsecanany($expression) . $this->openGlimpseWrapper("elsecanany{$expression}", 'authorization-else');
     }
 
     /**
@@ -95,6 +119,10 @@ trait CompilesAuthorizations
      */
     protected function compileEndcan()
     {
+        if (! config('glimpse.authorization_directives')) {
+            return $this->originalCompileEndcan();
+        }
+
         return $this->closeGlimpseWrapper() . $this->originalCompileEndcan();
     }
 
@@ -105,6 +133,10 @@ trait CompilesAuthorizations
      */
     protected function compileEndcannot()
     {
+        if (! config('glimpse.authorization_directives')) {
+            return $this->originalCompileEndcannot();
+        }
+
         return $this->closeGlimpseWrapper() . $this->originalCompileEndcannot();
     }
 
@@ -115,6 +147,10 @@ trait CompilesAuthorizations
      */
     protected function compileEndcanany()
     {
+        if (! config('glimpse.authorization_directives')) {
+            return $this->originalCompileEndcanany();
+        }
+
         return $this->closeGlimpseWrapper() . $this->originalCompileEndcanany();
     }
 }
