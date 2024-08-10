@@ -43,7 +43,8 @@
         "analyze": "vendor/bin/phpstan analyse",
         "baseline": "vendor/bin/phpstan analyse --generate-baseline",
 
-        "test": "@php vendor/bin/pest --bail"
+        "test": "@php vendor/bin/pest --bail",
+        "build": "bash build.sh"
     },
     "config": {
         "allow-plugins": {
