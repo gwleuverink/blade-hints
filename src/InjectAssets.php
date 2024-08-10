@@ -68,7 +68,8 @@ class InjectAssets
     protected function theme(): string
     {
         $variables = Arr::toCssStyles([
-            '--gl-border-color:' . config('glimpse.border_color'),
+            '--gl-authorization-if-color:' . config('glimpse.authorization_if_color'),
+            '--gl-authorization-else-color:' . config('glimpse.authorization_else_color'),
         ]);
 
         return ":root { {$variables} }";

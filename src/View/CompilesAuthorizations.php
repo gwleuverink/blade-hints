@@ -2,8 +2,26 @@
 
 namespace Leuverink\Glimpse\View;
 
+use Illuminate\View\Compilers\Concerns\CompilesAuthorizations as Original;
+
 trait CompilesAuthorizations
 {
+    use Original {
+        Original::compileCan as originalCompileCan;
+        Original::compileCannot as originalCompileCannot;
+        Original::compileCanany as originalCompileCanany;
+        Original::compileElsecan as originalCompileElsecan;
+        Original::compileElsecannot as originalCompileElsecannot;
+        Original::compileElsecanany as originalCompileElsecanany;
+        Original::compileEndcan as originalCompileEndcan;
+        Original::compileEndcannot as originalCompileEndcannot;
+        Original::compileEndcanany as originalCompileEndcanany;
+    }
+
+    abstract private function openGlimpseWrapper(string $label): string;
+
+    abstract private function closeGlimpseWrapper(): string;
+
     /**
      * Compile the can statements into valid PHP.
      *
@@ -12,7 +30,7 @@ trait CompilesAuthorizations
      */
     protected function compileCan($expression)
     {
-        return "<?php if (app(\Illuminate\\Contracts\\Auth\\Access\\Gate::class)->check{$expression}): ?>";
+        return $this->originalCompileCan($expression) . $this->openGlimpseWrapper("can{$expression}", 'authorization-if');
     }
 
     /**
@@ -23,7 +41,7 @@ trait CompilesAuthorizations
      */
     protected function compileCannot($expression)
     {
-        return "<?php if (app(\Illuminate\\Contracts\\Auth\\Access\\Gate::class)->denies{$expression}): ?>";
+        return $this->originalCompileCannot($expression) . $this->openGlimpseWrapper("cannot{$expression}", 'authorization-if');
     }
 
     /**
@@ -34,7 +52,7 @@ trait CompilesAuthorizations
      */
     protected function compileCanany($expression)
     {
-        return "<?php if (app(\Illuminate\\Contracts\\Auth\\Access\\Gate::class)->any{$expression}): ?>";
+        return $this->originalCompileCanany($expression) . $this->openGlimpseWrapper("canany{$expression}", 'authorization-if');
     }
 
     /**
@@ -45,7 +63,7 @@ trait CompilesAuthorizations
      */
     protected function compileElsecan($expression)
     {
-        return "<?php elseif (app(\Illuminate\\Contracts\\Auth\\Access\\Gate::class)->check{$expression}): ?>";
+        return $this->closeGlimpseWrapper() . $this->originalCompileElseCan($expression) . $this->openGlimpseWrapper("elsecan{$expression}", 'authorization-else');
     }
 
     /**
@@ -56,7 +74,7 @@ trait CompilesAuthorizations
      */
     protected function compileElsecannot($expression)
     {
-        return "<?php elseif (app(\Illuminate\\Contracts\\Auth\\Access\\Gate::class)->denies{$expression}): ?>";
+        return $this->closeGlimpseWrapper() . $this->originalCompileElseCannot($expression) . $this->openGlimpseWrapper("elsecannot{$expression}", 'authorization-else');
     }
 
     /**
@@ -67,7 +85,7 @@ trait CompilesAuthorizations
      */
     protected function compileElsecanany($expression)
     {
-        return "<?php elseif (app(\Illuminate\\Contracts\\Auth\\Access\\Gate::class)->any{$expression}): ?>";
+        return $this->closeGlimpseWrapper() . $this->originalCompileElseCanany($expression) . $this->openGlimpseWrapper("elsecanany{$expression}", 'authorization-else');
     }
 
     /**
@@ -77,7 +95,7 @@ trait CompilesAuthorizations
      */
     protected function compileEndcan()
     {
-        return '<?php endif; ?>';
+        return $this->closeGlimpseWrapper() . $this->originalCompileEndcan();
     }
 
     /**
@@ -87,7 +105,7 @@ trait CompilesAuthorizations
      */
     protected function compileEndcannot()
     {
-        return '<?php endif; ?>';
+        return $this->closeGlimpseWrapper() . $this->originalCompileEndcannot();
     }
 
     /**
@@ -97,6 +115,6 @@ trait CompilesAuthorizations
      */
     protected function compileEndcanany()
     {
-        return '<?php endif; ?>';
+        return $this->closeGlimpseWrapper() . $this->originalCompileEndcanany();
     }
 }

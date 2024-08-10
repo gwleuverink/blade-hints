@@ -24,10 +24,10 @@ class BladeCompiler extends Compiler
         return parent::isExpired($path);
     }
 
-    private function openGlimpseWrapper(string $label): string
+    private function openGlimpseWrapper(string $label, string $type = 'authorization-if'): string
     {
         return <<< HTML
-        <span class="glimpse" data-glimpse-label="{$label}">
+        <span class="glimpse glimpse__{$type}" data-glimpse-label="{$label}">
         HTML;
     }
 
