@@ -39,7 +39,7 @@ trait CompilesConditionals
 
         $guard = is_null($guard) ? '()' : $guard;
 
-        return "<?php if(auth()->guard{$guard}->check()): ?>";
+        return $this->originalCompileAuth($guard);
     }
 
     /**
@@ -56,7 +56,7 @@ trait CompilesConditionals
 
         $guard = is_null($guard) ? '()' : $guard;
 
-        return "<?php elseif(auth()->guard{$guard}->check()): ?>";
+        return $this->originalCompileElseAuth($guard);
     }
 
     /**
@@ -70,7 +70,7 @@ trait CompilesConditionals
             return $this->originalCompileEndAuth();
         }
 
-        return '<?php endif; ?>';
+        return $this->originalCompileEndAuth();
     }
 
     /**
@@ -85,7 +85,7 @@ trait CompilesConditionals
             return $this->originalCompileEnv($environments);
         }
 
-        return "<?php if(app()->environment{$environments}): ?>";
+        return $this->originalCompileEnv($environments);
     }
 
     /**
@@ -99,7 +99,7 @@ trait CompilesConditionals
             return $this->originalCompileEndEnv();
         }
 
-        return '<?php endif; ?>';
+        return $this->originalCompileEndEnv();
     }
 
     /**
@@ -113,7 +113,7 @@ trait CompilesConditionals
             return $this->originalCompileProduction();
         }
 
-        return "<?php if(app()->environment('production')): ?>";
+        return $this->originalCompileProduction();
     }
 
     /**
@@ -127,7 +127,7 @@ trait CompilesConditionals
             return $this->originalCompileEndProduction();
         }
 
-        return '<?php endif; ?>';
+        return $this->originalCompileEndProduction();
     }
 
     /**
@@ -144,7 +144,7 @@ trait CompilesConditionals
 
         $guard = is_null($guard) ? '()' : $guard;
 
-        return "<?php if(auth()->guard{$guard}->guest()): ?>";
+        return $this->originalCompileGuest($guard);
     }
 
     /**
@@ -161,7 +161,7 @@ trait CompilesConditionals
 
         $guard = is_null($guard) ? '()' : $guard;
 
-        return "<?php elseif(auth()->guard{$guard}->guest()): ?>";
+        return $this->originalCompileElseGuest($guard);
     }
 
     /**
@@ -171,6 +171,10 @@ trait CompilesConditionals
      */
     protected function compileEndGuest()
     {
-        return '<?php endif; ?>';
+        if (! config('glimpse.guest_directives')) {
+            return $this->originalCompileEndGuest();
+        }
+
+        return $this->originalCompileEndGuest();
     }
 }
