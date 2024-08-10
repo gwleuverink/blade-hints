@@ -39,7 +39,7 @@ trait CompilesConditionals
 
         $guard = is_null($guard) ? '()' : $guard;
 
-        return $this->originalCompileAuth($guard);
+        return $this->originalCompileAuth($guard) . $this->openGlimpseWrapper("auth{$guard}", 'authentication-if');
     }
 
     /**
@@ -56,7 +56,7 @@ trait CompilesConditionals
 
         $guard = is_null($guard) ? '()' : $guard;
 
-        return $this->originalCompileElseAuth($guard);
+        return $this->closeGlimpseWrapper() . $this->originalCompileElseAuth($guard) . $this->openGlimpseWrapper("else-auth{$guard}", 'authentication-else');
     }
 
     /**
@@ -70,7 +70,7 @@ trait CompilesConditionals
             return $this->originalCompileEndAuth();
         }
 
-        return $this->originalCompileEndAuth();
+        return $this->closeGlimpseWrapper() . $this->originalCompileEndAuth();
     }
 
     /**
@@ -85,7 +85,7 @@ trait CompilesConditionals
             return $this->originalCompileEnv($environments);
         }
 
-        return $this->originalCompileEnv($environments);
+        return $this->originalCompileEnv($environments) . $this->openGlimpseWrapper('env', 'environment-if');
     }
 
     /**
@@ -99,7 +99,7 @@ trait CompilesConditionals
             return $this->originalCompileEndEnv();
         }
 
-        return $this->originalCompileEndEnv();
+        return $this->closeGlimpseWrapper() . $this->originalCompileEndEnv();
     }
 
     /**
@@ -113,7 +113,7 @@ trait CompilesConditionals
             return $this->originalCompileProduction();
         }
 
-        return $this->originalCompileProduction();
+        return $this->originalCompileProduction() . $this->openGlimpseWrapper('production', 'environment-if');
     }
 
     /**
@@ -127,7 +127,7 @@ trait CompilesConditionals
             return $this->originalCompileEndProduction();
         }
 
-        return $this->originalCompileEndProduction();
+        return $this->closeGlimpseWrapper() . $this->originalCompileEndProduction();
     }
 
     /**
@@ -144,7 +144,7 @@ trait CompilesConditionals
 
         $guard = is_null($guard) ? '()' : $guard;
 
-        return $this->originalCompileGuest($guard);
+        return $this->originalCompileGuest($guard) . $this->openGlimpseWrapper("guest{$guard}", 'guest-if');
     }
 
     /**
@@ -161,7 +161,7 @@ trait CompilesConditionals
 
         $guard = is_null($guard) ? '()' : $guard;
 
-        return $this->originalCompileElseGuest($guard);
+        return $this->closeGlimpseWrapper() . $this->originalCompileElseGuest($guard) . $this->openGlimpseWrapper("else-guest{$guard}", 'guest-else');
     }
 
     /**
@@ -175,6 +175,6 @@ trait CompilesConditionals
             return $this->originalCompileEndGuest();
         }
 
-        return $this->originalCompileEndGuest();
+        return $this->closeGlimpseWrapper() . $this->originalCompileEndGuest();
     }
 }

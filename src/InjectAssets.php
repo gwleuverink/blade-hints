@@ -70,6 +70,15 @@ class InjectAssets
         $variables = Arr::toCssStyles([
             '--gl-authorization-if-color:' . config('glimpse.authorization_if_color'),
             '--gl-authorization-else-color:' . config('glimpse.authorization_else_color'),
+
+            '--gl-authentication-if-color:' . config('glimpse.authentication_if_color'),
+            '--gl-authentication-else-color:' . config('glimpse.authentication_else_color'),
+
+            '--gl-environment-if-color:' . config('glimpse.environment_if_color'),
+            // '--gl-environment-else-color:' . config('glimpse.environment_else_color'),
+
+            '--gl-guest-if-color:' . config('glimpse.guest_if_color'),
+            // '--gl-guest-else-color:' . config('glimpse.guest_else_color'),
         ]);
 
         return ":root { {$variables} }";
