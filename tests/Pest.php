@@ -11,7 +11,7 @@
 |
 */
 
-uses(Tests\TestCase::class)->in('View');
+uses(Tests\TestCase::class)->in('View', 'Feature');
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +24,9 @@ uses(Tests\TestCase::class)->in('View');
 |
 */
 
-expect()->extend('toBeOne', function () {
-    return $this->toBe(1);
-});
+// expect()->extend('toBeOne', function () {
+//     return $this->toBe(1);
+// });
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
-{
-    // ..
-}
+// function something()
+// {
+//     // ..
+// }
