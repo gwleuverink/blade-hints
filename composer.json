@@ -5,7 +5,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Leuverink\\Glimpse\\": "src/"
+            "Leuverink\\Glimpse\\": "src/",
+            "Tests\\": "tests/"
         }
     },
     "authors": [

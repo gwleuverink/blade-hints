@@ -1,0 +1,2 @@
+providers:
+  - Leuverink\Glimpse\ServiceProvider
