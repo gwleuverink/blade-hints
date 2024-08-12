@@ -1,6 +1,6 @@
 <?php
 
-namespace Leuverink\Glimpse\View;
+namespace Leuverink\BladeHints\View;
 
 use ErrorException;
 use Illuminate\View\Compilers\BladeCompiler as Compiler;
@@ -11,20 +11,20 @@ class BladeCompiler extends Compiler
     use CompilesConditionals;
 
     /**
-     * Disable view caching when Glimpse is enabled
+     * Disable view caching when BladeHints is enabled
      *
      * @throws ErrorException
      */
     public function isExpired($path)
     {
-        if (config('glimpse.enabled')) {
+        if (config('blade-hints.enabled')) {
             return true;
         }
 
         return parent::isExpired($path);
     }
 
-    private function openGlimpseWrapper(string $label, string $type = 'authorization-if'): string
+    private function openBladeHintsWrapper(string $label, string $type = 'authorization-if'): string
     {
         $label = str($label)
             ->replace("'", '')
@@ -32,11 +32,11 @@ class BladeCompiler extends Compiler
             ->toString();
 
         return <<< HTML
-        <span class="glimpse glimpse__{$type}" data-glimpse-label="{$label}">
+        <span class="blade-hints blade-hints__{$type}" data-blade-hints-label="{$label}">
         HTML;
     }
 
-    private function closeGlimpseWrapper(): string
+    private function closeBladeHintsWrapper(): string
     {
         return <<< 'HTML'
         </span>

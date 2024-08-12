@@ -4,4 +4,4 @@ ESBUILD="./node_modules/.bin/esbuild"
 
 npm ci
 
-$ESBUILD ./resources/glimpse.js --outdir=./build/ --target=chrome58,firefox57,safari11,edge16 --format=esm --bundle --minify
+$ESBUILD ./resources/blade-hints.js --outdir=./build/ --target=chrome58,firefox57,safari11,edge16 --format=esm --bundle --minify

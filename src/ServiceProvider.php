@@ -1,10 +1,10 @@
 <?php
 
-namespace Leuverink\Glimpse;
+namespace Leuverink\BladeHints;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\View\DynamicComponent;
-use Leuverink\Glimpse\View\BladeCompiler;
+use Leuverink\BladeHints\View\BladeCompiler;
 use Illuminate\Foundation\Http\Events\RequestHandled;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
@@ -16,8 +16,8 @@ class ServiceProvider extends BaseServiceProvider
         if (! $this->app->environment(['local', 'testing'])) {
 
             $this->publishes([
-                __DIR__ . '/../config/glimpse.php' => base_path('config/glimpse.php'),
-            ], 'glimpse');
+                __DIR__ . '/../config/blade-hints.php' => base_path('config/blade-hints.php'),
+            ], 'blade-hints');
         }
 
         $this->injectAssets();
@@ -26,7 +26,7 @@ class ServiceProvider extends BaseServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/glimpse.php', 'glimpse'
+            __DIR__ . '/../config/blade-hints.php', 'blade-hints'
         );
 
         $this->registerBladeCompiler();

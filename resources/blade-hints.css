@@ -6,8 +6,8 @@
   --parent-display: inherit;
 }
 
-/* Style the .glimpse div */
-.glimpse {
+/* Style the .blade-hints div */
+.blade-hints {
   all: inherit; /* Inherit all properties from parent */
   font: var(--parent-font);
   color: var(--parent-color);
@@ -28,32 +28,34 @@
 }
 
 /* Reset inheritance for children */
-.glimpse > * {
+/*
+.blade-hints > * {
   all: revert;
 }
+*/
 
 /* Apply theme colors */
-.glimpse.glimpse__authorization-if {
+.blade-hints.blade-hints__authorization-if {
   box-shadow: inset 0 0 0 1.5px var(--gl-authorization-if-color);
 }
 
-.glimpse.glimpse__authorization-else {
+.blade-hints.blade-hints__authorization-else {
   box-shadow: inset 0 0 0 1.5px var(--gl-authorization-else-color);
   filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));
 }
 
-.glimpse.glimpse__authentication-if {
+.blade-hints.blade-hints__authentication-if {
   box-shadow: inset 0 0 0 1.5px var(--gl-authentication-if-color);
 }
 
-.glimpse.glimpse__authentication-else {
+.blade-hints.blade-hints__authentication-else {
   box-shadow: inset 0 0 0 1.5px var(--gl-authentication-else-color);
 }
 
-.glimpse.glimpse__environment-if {
+.blade-hints.blade-hints__environment-if {
   box-shadow: inset 0 0 0 1.5px var(--gl-environment-if-color);
 }
 
-.glimpse.glimpse__guest-if {
+.blade-hints.blade-hints__guest-if {
   box-shadow: inset 0 0 0 1.5px var(--gl-guest-if-color);
 }

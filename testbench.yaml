@@ -1,2 +1,2 @@
 providers:
-  - Leuverink\Glimpse\ServiceProvider
+  - Leuverink\BladeHints\ServiceProvider

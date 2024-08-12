@@ -1,11 +1,11 @@
 {
-    "name": "leuverink/glimpse",
+    "name": "leuverink/blade-hints",
     "description": "Easily spot missing authorization checks in Blade",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Leuverink\\Glimpse\\": "src/",
+            "Leuverink\\BladeHints\\": "src/",
             "Tests\\": "tests/"
         }
     },
@@ -34,7 +34,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Leuverink\\Glimpse\\ServiceProvider"
+                "Leuverink\\BladeHints\\ServiceProvider"
             ]
         }
     },

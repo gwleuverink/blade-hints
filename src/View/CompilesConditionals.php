@@ -1,6 +1,6 @@
 <?php
 
-namespace Leuverink\Glimpse\View;
+namespace Leuverink\BladeHints\View;
 
 use Illuminate\View\Compilers\Concerns\CompilesConditionals as Original;
 
@@ -21,9 +21,9 @@ trait CompilesConditionals
         Original::compileEndGuest as originalCompileEndGuest;
     }
 
-    abstract private function openGlimpseWrapper(string $label): string;
+    abstract private function openBladeHintsWrapper(string $label): string;
 
-    abstract private function closeGlimpseWrapper(): string;
+    abstract private function closeBladeHintsWrapper(): string;
 
     /**
      * Compile the if-auth statements into valid PHP.
@@ -33,14 +33,14 @@ trait CompilesConditionals
      */
     protected function compileAuth($guard = null)
     {
-        if (! config('glimpse.authentication_directives')) {
+        if (! config('blade-hints.authentication_directives')) {
             return $this->originalCompileAuth($guard);
         }
 
         $guard = is_null($guard) ? '()' : $guard;
 
         return $this->originalCompileAuth($guard) . PHP_EOL
-            . $this->openGlimpseWrapper("auth{$guard}", 'authentication-if');
+            . $this->openBladeHintsWrapper("auth{$guard}", 'authentication-if');
     }
 
     /**
@@ -51,15 +51,15 @@ trait CompilesConditionals
      */
     protected function compileElseAuth($guard = null)
     {
-        if (! config('glimpse.authentication_directives')) {
+        if (! config('blade-hints.authentication_directives')) {
             return $this->originalCompileElseAuth($guard);
         }
 
         $guard = is_null($guard) ? '()' : $guard;
 
-        return $this->closeGlimpseWrapper() . PHP_EOL
+        return $this->closeBladeHintsWrapper() . PHP_EOL
             . $this->originalCompileElseAuth($guard) . PHP_EOL
-            . $this->openGlimpseWrapper("elseauth{$guard}", 'authentication-else');
+            . $this->openBladeHintsWrapper("elseauth{$guard}", 'authentication-else');
     }
 
     /**
@@ -69,11 +69,11 @@ trait CompilesConditionals
      */
     protected function compileEndAuth()
     {
-        if (! config('glimpse.authentication_directives')) {
+        if (! config('blade-hints.authentication_directives')) {
             return $this->originalCompileEndAuth();
         }
 
-        return $this->closeGlimpseWrapper() . PHP_EOL
+        return $this->closeBladeHintsWrapper() . PHP_EOL
             . $this->originalCompileEndAuth();
     }
 
@@ -85,12 +85,12 @@ trait CompilesConditionals
      */
     protected function compileEnv($environments)
     {
-        if (! config('glimpse.environment_directives')) {
+        if (! config('blade-hints.environment_directives')) {
             return $this->originalCompileEnv($environments);
         }
 
         return $this->originalCompileEnv($environments) . PHP_EOL
-            . $this->openGlimpseWrapper("env{$environments}", 'environment-if');
+            . $this->openBladeHintsWrapper("env{$environments}", 'environment-if');
     }
 
     /**
@@ -100,11 +100,11 @@ trait CompilesConditionals
      */
     protected function compileEndEnv()
     {
-        if (! config('glimpse.environment_directives')) {
+        if (! config('blade-hints.environment_directives')) {
             return $this->originalCompileEndEnv();
         }
 
-        return $this->closeGlimpseWrapper() . PHP_EOL
+        return $this->closeBladeHintsWrapper() . PHP_EOL
             . $this->originalCompileEndEnv();
     }
 
@@ -115,12 +115,12 @@ trait CompilesConditionals
      */
     protected function compileProduction()
     {
-        if (! config('glimpse.environment_directives')) {
+        if (! config('blade-hints.environment_directives')) {
             return $this->originalCompileProduction();
         }
 
         return $this->originalCompileProduction() . PHP_EOL
-            . $this->openGlimpseWrapper('production', 'environment-if');
+            . $this->openBladeHintsWrapper('production', 'environment-if');
     }
 
     /**
@@ -130,11 +130,11 @@ trait CompilesConditionals
      */
     protected function compileEndProduction()
     {
-        if (! config('glimpse.environment_directives')) {
+        if (! config('blade-hints.environment_directives')) {
             return $this->originalCompileEndProduction();
         }
 
-        return $this->closeGlimpseWrapper() . PHP_EOL
+        return $this->closeBladeHintsWrapper() . PHP_EOL
             . $this->originalCompileEndProduction();
     }
 
@@ -146,14 +146,14 @@ trait CompilesConditionals
      */
     protected function compileGuest($guard = null)
     {
-        if (! config('glimpse.guest_directives')) {
+        if (! config('blade-hints.guest_directives')) {
             return $this->originalCompileGuest($guard);
         }
 
         $guard = is_null($guard) ? '()' : $guard;
 
         return $this->originalCompileGuest($guard) . PHP_EOL
-            . $this->openGlimpseWrapper("guest{$guard}", 'guest-if');
+            . $this->openBladeHintsWrapper("guest{$guard}", 'guest-if');
     }
 
     /**
@@ -164,15 +164,15 @@ trait CompilesConditionals
      */
     protected function compileElseGuest($guard = null)
     {
-        if (! config('glimpse.guest_directives')) {
+        if (! config('blade-hints.guest_directives')) {
             return $this->originalCompileElseGuest($guard);
         }
 
         $guard = is_null($guard) ? '()' : $guard;
 
-        return $this->closeGlimpseWrapper() . PHP_EOL
+        return $this->closeBladeHintsWrapper() . PHP_EOL
             . $this->originalCompileElseGuest($guard) . PHP_EOL
-            . $this->openGlimpseWrapper("else-guest{$guard}", 'guest-else');
+            . $this->openBladeHintsWrapper("else-guest{$guard}", 'guest-else');
     }
 
     /**
@@ -182,11 +182,11 @@ trait CompilesConditionals
      */
     protected function compileEndGuest()
     {
-        if (! config('glimpse.guest_directives')) {
+        if (! config('blade-hints.guest_directives')) {
             return $this->originalCompileEndGuest();
         }
 
-        return $this->closeGlimpseWrapper() . PHP_EOL
+        return $this->closeBladeHintsWrapper() . PHP_EOL
             . $this->originalCompileEndGuest();
     }
 }

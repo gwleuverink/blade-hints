@@ -4,7 +4,7 @@ namespace Tests;
 
 use Mockery as m;
 use Illuminate\Filesystem\Filesystem;
-use Leuverink\Glimpse\View\BladeCompiler;
+use Leuverink\BladeHints\View\BladeCompiler;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Illuminate\View\Compilers\CompilerInterface;
 use Orchestra\Testbench\TestCase as BaseTestCase;
@@ -21,7 +21,7 @@ abstract class TestCase extends BaseTestCase
 
         $this->compiler = new BladeCompiler($this->getFiles(), __DIR__);
 
-        config(['glimpse.enabled' => true]);
+        config(['blade-hints.enabled' => true]);
     }
 
     protected function getFiles()

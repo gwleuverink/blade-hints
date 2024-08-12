@@ -5,7 +5,7 @@ it('injects assets into head tag', function () {
 
     $this->get('test-inject-in-response')
         ->assertOk()
-        ->assertSee('<!--[GLIMPSE-ASSETS]-->', false);
+        ->assertSee('<!--[BLADE_HINTS-ASSETS]-->', false);
 });
 
 it('injects assets into html body when no head tag is present', function () {
@@ -13,7 +13,7 @@ it('injects assets into html body when no head tag is present', function () {
 
     $this->get('test-inject-in-response')
         ->assertOk()
-        ->assertSee('<!--[GLIMPSE-ASSETS]-->', false);
+        ->assertSee('<!--[BLADE_HINTS-ASSETS]-->', false);
 });
 
 it('doesnt inject assets into responses without a closing html tag', function () {
@@ -21,5 +21,5 @@ it('doesnt inject assets into responses without a closing html tag', function ()
 
     $this->get('test-inject-in-response')
         ->assertOk()
-        ->assertDontSee('<!--[GLIMPSE-ASSETS]-->', false);
+        ->assertDontSee('<!--[BLADE_HINTS-ASSETS]-->', false);
 });

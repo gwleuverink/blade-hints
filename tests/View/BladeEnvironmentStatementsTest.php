@@ -11,7 +11,7 @@ test('environment statements are compiled', function () {
 
     $expected = <<< 'HTML'
     <?php if(app()->environment('staging')): ?>
-    <span class="glimpse glimpse__environment-if" data-glimpse-label="env(staging)">
+    <span class="blade-hints blade-hints__environment-if" data-blade-hints-label="env(staging)">
     breeze
     <?php else: ?>
     boom
@@ -20,7 +20,7 @@ test('environment statements are compiled', function () {
     HTML;
 
     expect($this->compiler->compileString($string))
-        ->toContain('data-glimpse')
+        ->toContain('data-blade-hints')
         ->toBe($expected);
 });
 
@@ -35,7 +35,7 @@ test('environment statements with multiple string parameters are compiled', func
 
     $expected = <<< 'HTML'
     <?php if(app()->environment('staging', 'production')): ?>
-    <span class="glimpse glimpse__environment-if" data-glimpse-label="env(staging, production)">
+    <span class="blade-hints blade-hints__environment-if" data-blade-hints-label="env(staging, production)">
     breeze
     <?php else: ?>
     boom
@@ -44,7 +44,7 @@ test('environment statements with multiple string parameters are compiled', func
     HTML;
 
     expect($this->compiler->compileString($string))
-        ->toContain('data-glimpse')
+        ->toContain('data-blade-hints')
         ->toBe($expected);
 });
 
@@ -59,7 +59,7 @@ test('environment statements with array parameters are compiled', function () {
 
     $expected = <<< 'HTML'
     <?php if(app()->environment(['staging', 'production'])): ?>
-    <span class="glimpse glimpse__environment-if" data-glimpse-label="env([staging, production])">
+    <span class="blade-hints blade-hints__environment-if" data-blade-hints-label="env([staging, production])">
     breeze
     <?php else: ?>
     boom
@@ -68,7 +68,7 @@ test('environment statements with array parameters are compiled', function () {
     HTML;
 
     expect($this->compiler->compileString($string))
-        ->toContain('data-glimpse')
+        ->toContain('data-blade-hints')
         ->toBe($expected);
 });
 
@@ -83,7 +83,7 @@ test('production statements are compiled', function () {
 
     $expected = <<< 'HTML'
     <?php if(app()->environment('production')): ?>
-    <span class="glimpse glimpse__environment-if" data-glimpse-label="production">
+    <span class="blade-hints blade-hints__environment-if" data-blade-hints-label="production">
     breeze
     <?php else: ?>
     boom
@@ -92,14 +92,14 @@ test('production statements are compiled', function () {
     HTML;
 
     expect($this->compiler->compileString($string))
-        ->toContain('data-glimpse')
+        ->toContain('data-blade-hints')
         ->toBe($expected);
 });
 
 test('environment statement falls back to original when feature disabled', function () {
 
     config([
-        'glimpse.environment_directives' => false,
+        'blade-hints.environment_directives' => false,
     ]);
 
     $string = <<< 'BLADE'
@@ -114,5 +114,5 @@ test('environment statement falls back to original when feature disabled', funct
     BLADE;
 
     expect($this->compiler->compileString($string))
-        ->not->toContain('data-glimpse');
+        ->not->toContain('data-blade-hints');
 });

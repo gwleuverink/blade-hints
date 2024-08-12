@@ -1,4 +1,4 @@
-# Glimpse
+# Blade Hints
 
 Easily spot missing authorization checks in Laravel
 
@@ -18,7 +18,7 @@ Supported directives:
 
 ```php
 [
-    'enabled' => env('GLIMPSE_ENABLED', app()->isLocal()),
+    'enabled' => env('BLADE_HINTS_ENABLED', app()->isLocal()),
 
     'authorization_directives' => true,
     'authorization_if_color' => '#fca5a5', // red-300

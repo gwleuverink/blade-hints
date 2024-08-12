@@ -11,25 +11,25 @@ test('guest statements are compiled', function () {
 
     $expected = <<< 'HTML'
     <?php if(auth()->guard("api")->guest()): ?>
-    <span class="glimpse glimpse__guest-if" data-glimpse-label="guest(api)">
+    <span class="blade-hints blade-hints__guest-if" data-blade-hints-label="guest(api)">
     breeze
     </span>
     <?php elseif(auth()->guard("standard")->guest()): ?>
-    <span class="glimpse glimpse__guest-else" data-glimpse-label="else-guest(standard)">
+    <span class="blade-hints blade-hints__guest-else" data-blade-hints-label="else-guest(standard)">
     wheeze
     </span>
     <?php endif; ?>
     HTML;
 
     expect($this->compiler->compileString($string))
-        ->toContain('data-glimpse')
+        ->toContain('data-blade-hints')
         ->toBe($expected);
 });
 
 test('guest statement falls back to original when feature disabled', function () {
 
     config([
-        'glimpse.guest_directives' => false,
+        'blade-hints.guest_directives' => false,
     ]);
 
     $string = <<< 'BLADE'
@@ -41,5 +41,5 @@ test('guest statement falls back to original when feature disabled', function ()
     BLADE;
 
     expect($this->compiler->compileString($string))
-        ->not->toContain('data-glimpse');
+        ->not->toContain('data-blade-hints');
 });

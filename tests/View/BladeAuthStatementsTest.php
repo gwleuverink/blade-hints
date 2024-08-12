@@ -11,25 +11,25 @@ test('auth statements are compiled', function () {
 
     $expected = <<< 'HTML'
     <?php if(auth()->guard("api")->check()): ?>
-    <span class="glimpse glimpse__authentication-if" data-glimpse-label="auth(api)">
+    <span class="blade-hints blade-hints__authentication-if" data-blade-hints-label="auth(api)">
     breeze
     </span>
     <?php elseif(auth()->guard("standard")->check()): ?>
-    <span class="glimpse glimpse__authentication-else" data-glimpse-label="elseauth(standard)">
+    <span class="blade-hints blade-hints__authentication-else" data-blade-hints-label="elseauth(standard)">
     sneeze
     </span>
     <?php endif; ?>
     HTML;
 
     expect($this->compiler->compileString($string))
-        ->toContain('data-glimpse')
+        ->toContain('data-blade-hints')
         ->toBe($expected);
 });
 
 test('can statement falls back to original when feature disabled', function () {
 
     config([
-        'glimpse.authentication_directives' => false,
+        'blade-hints.authentication_directives' => false,
     ]);
 
     $string = <<< 'BLADE'
@@ -39,5 +39,5 @@ test('can statement falls back to original when feature disabled', function () {
     BLADE;
 
     expect($this->compiler->compileString($string))
-        ->not->toContain('data-glimpse');
+        ->not->toContain('data-blade-hints');
 });

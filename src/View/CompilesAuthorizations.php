@@ -1,6 +1,6 @@
 <?php
 
-namespace Leuverink\Glimpse\View;
+namespace Leuverink\BladeHints\View;
 
 use Illuminate\View\Compilers\Concerns\CompilesAuthorizations as Original;
 
@@ -18,9 +18,9 @@ trait CompilesAuthorizations
         Original::compileEndcanany as originalCompileEndcanany;
     }
 
-    abstract private function openGlimpseWrapper(string $label): string;
+    abstract private function openBladeHintsWrapper(string $label): string;
 
-    abstract private function closeGlimpseWrapper(): string;
+    abstract private function closeBladeHintsWrapper(): string;
 
     /**
      * Compile the can statements into valid PHP.
@@ -30,12 +30,12 @@ trait CompilesAuthorizations
      */
     protected function compileCan($expression)
     {
-        if (! config('glimpse.authorization_directives')) {
+        if (! config('blade-hints.authorization_directives')) {
             return $this->originalCompileCan($expression);
         }
 
         return $this->originalCompileCan($expression) . PHP_EOL .
-            $this->openGlimpseWrapper("can{$expression}", 'authorization-if');
+            $this->openBladeHintsWrapper("can{$expression}", 'authorization-if');
     }
 
     /**
@@ -46,12 +46,12 @@ trait CompilesAuthorizations
      */
     protected function compileCannot($expression)
     {
-        if (! config('glimpse.authorization_directives')) {
+        if (! config('blade-hints.authorization_directives')) {
             return $this->originalCompileCannot($expression);
         }
 
         return $this->originalCompileCannot($expression) . PHP_EOL
-            . $this->openGlimpseWrapper("cannot{$expression}", 'authorization-if');
+            . $this->openBladeHintsWrapper("cannot{$expression}", 'authorization-if');
     }
 
     /**
@@ -62,12 +62,12 @@ trait CompilesAuthorizations
      */
     protected function compileCanany($expression)
     {
-        if (! config('glimpse.authorization_directives')) {
+        if (! config('blade-hints.authorization_directives')) {
             return $this->originalCompileCanany($expression);
         }
 
         return $this->originalCompileCanany($expression) . PHP_EOL
-            . $this->openGlimpseWrapper("canany{$expression}", 'authorization-if');
+            . $this->openBladeHintsWrapper("canany{$expression}", 'authorization-if');
     }
 
     /**
@@ -78,13 +78,13 @@ trait CompilesAuthorizations
      */
     protected function compileElsecan($expression)
     {
-        if (! config('glimpse.authorization_directives')) {
+        if (! config('blade-hints.authorization_directives')) {
             return $this->originalCompileElsecan($expression);
         }
 
-        return $this->closeGlimpseWrapper() . PHP_EOL .
+        return $this->closeBladeHintsWrapper() . PHP_EOL .
             $this->originalCompileElsecan($expression) . PHP_EOL .
-            $this->openGlimpseWrapper("elsecan{$expression}", 'authorization-else');
+            $this->openBladeHintsWrapper("elsecan{$expression}", 'authorization-else');
     }
 
     /**
@@ -95,13 +95,13 @@ trait CompilesAuthorizations
      */
     protected function compileElsecannot($expression)
     {
-        if (! config('glimpse.authorization_directives')) {
+        if (! config('blade-hints.authorization_directives')) {
             return $this->originalCompileElsecannot($expression);
         }
 
-        return $this->closeGlimpseWrapper() . PHP_EOL
+        return $this->closeBladeHintsWrapper() . PHP_EOL
             . $this->originalCompileElsecannot($expression) . PHP_EOL
-            . $this->openGlimpseWrapper("elsecannot{$expression}", 'authorization-else');
+            . $this->openBladeHintsWrapper("elsecannot{$expression}", 'authorization-else');
     }
 
     /**
@@ -112,13 +112,13 @@ trait CompilesAuthorizations
      */
     protected function compileElsecanany($expression)
     {
-        if (! config('glimpse.authorization_directives')) {
+        if (! config('blade-hints.authorization_directives')) {
             return $this->originalCompileElsecanany($expression);
         }
 
-        return $this->closeGlimpseWrapper() . PHP_EOL
+        return $this->closeBladeHintsWrapper() . PHP_EOL
             . $this->originalCompileElsecanany($expression) . PHP_EOL
-            . $this->openGlimpseWrapper("elsecanany{$expression}", 'authorization-else');
+            . $this->openBladeHintsWrapper("elsecanany{$expression}", 'authorization-else');
     }
 
     /**
@@ -128,11 +128,11 @@ trait CompilesAuthorizations
      */
     protected function compileEndcan()
     {
-        if (! config('glimpse.authorization_directives')) {
+        if (! config('blade-hints.authorization_directives')) {
             return $this->originalCompileEndcan();
         }
 
-        return $this->closeGlimpseWrapper() . PHP_EOL
+        return $this->closeBladeHintsWrapper() . PHP_EOL
             . $this->originalCompileEndcan();
     }
 
@@ -143,11 +143,11 @@ trait CompilesAuthorizations
      */
     protected function compileEndcannot()
     {
-        if (! config('glimpse.authorization_directives')) {
+        if (! config('blade-hints.authorization_directives')) {
             return $this->originalCompileEndcannot();
         }
 
-        return $this->closeGlimpseWrapper() . PHP_EOL
+        return $this->closeBladeHintsWrapper() . PHP_EOL
             . $this->originalCompileEndcannot();
     }
 
@@ -158,11 +158,11 @@ trait CompilesAuthorizations
      */
     protected function compileEndcanany()
     {
-        if (! config('glimpse.authorization_directives')) {
+        if (! config('blade-hints.authorization_directives')) {
             return $this->originalCompileEndcanany();
         }
 
-        return $this->closeGlimpseWrapper() . PHP_EOL
+        return $this->closeBladeHintsWrapper() . PHP_EOL
             . $this->originalCompileEndcanany();
     }
 }
