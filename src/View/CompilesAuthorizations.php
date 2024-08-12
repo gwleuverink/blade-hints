@@ -34,7 +34,8 @@ trait CompilesAuthorizations
             return $this->originalCompileCan($expression);
         }
 
-        return $this->originalCompileCan($expression) . $this->openGlimpseWrapper("can{$expression}", 'authorization-if');
+        return $this->originalCompileCan($expression) . PHP_EOL .
+            $this->openGlimpseWrapper("can{$expression}", 'authorization-if');
     }
 
     /**
@@ -49,7 +50,8 @@ trait CompilesAuthorizations
             return $this->originalCompileCannot($expression);
         }
 
-        return $this->originalCompileCannot($expression) . $this->openGlimpseWrapper("cannot{$expression}", 'authorization-if');
+        return $this->originalCompileCannot($expression) . PHP_EOL
+            . $this->openGlimpseWrapper("cannot{$expression}", 'authorization-if');
     }
 
     /**
@@ -64,7 +66,8 @@ trait CompilesAuthorizations
             return $this->originalCompileCanany($expression);
         }
 
-        return $this->originalCompileCanany($expression) . $this->openGlimpseWrapper("canany{$expression}", 'authorization-if');
+        return $this->originalCompileCanany($expression) . PHP_EOL
+            . $this->openGlimpseWrapper("canany{$expression}", 'authorization-if');
     }
 
     /**
@@ -79,7 +82,9 @@ trait CompilesAuthorizations
             return $this->originalCompileElsecan($expression);
         }
 
-        return $this->closeGlimpseWrapper() . $this->originalCompileElsecan($expression) . $this->openGlimpseWrapper("elsecan{$expression}", 'authorization-else');
+        return $this->closeGlimpseWrapper() . PHP_EOL .
+            $this->originalCompileElsecan($expression) . PHP_EOL .
+            $this->openGlimpseWrapper("elsecan{$expression}", 'authorization-else');
     }
 
     /**
@@ -94,7 +99,9 @@ trait CompilesAuthorizations
             return $this->originalCompileElsecannot($expression);
         }
 
-        return $this->closeGlimpseWrapper() . $this->originalCompileElsecannot($expression) . $this->openGlimpseWrapper("elsecannot{$expression}", 'authorization-else');
+        return $this->closeGlimpseWrapper() . PHP_EOL
+            . $this->originalCompileElsecannot($expression) . PHP_EOL
+            . $this->openGlimpseWrapper("elsecannot{$expression}", 'authorization-else');
     }
 
     /**
@@ -109,7 +116,9 @@ trait CompilesAuthorizations
             return $this->originalCompileElsecanany($expression);
         }
 
-        return $this->closeGlimpseWrapper() . $this->originalCompileElsecanany($expression) . $this->openGlimpseWrapper("elsecanany{$expression}", 'authorization-else');
+        return $this->closeGlimpseWrapper() . PHP_EOL
+            . $this->originalCompileElsecanany($expression) . PHP_EOL
+            . $this->openGlimpseWrapper("elsecanany{$expression}", 'authorization-else');
     }
 
     /**
@@ -123,7 +132,8 @@ trait CompilesAuthorizations
             return $this->originalCompileEndcan();
         }
 
-        return $this->closeGlimpseWrapper() . $this->originalCompileEndcan();
+        return $this->closeGlimpseWrapper() . PHP_EOL
+            . $this->originalCompileEndcan();
     }
 
     /**
@@ -137,7 +147,8 @@ trait CompilesAuthorizations
             return $this->originalCompileEndcannot();
         }
 
-        return $this->closeGlimpseWrapper() . $this->originalCompileEndcannot();
+        return $this->closeGlimpseWrapper() . PHP_EOL
+            . $this->originalCompileEndcannot();
     }
 
     /**
@@ -151,6 +162,7 @@ trait CompilesAuthorizations
             return $this->originalCompileEndcanany();
         }
 
-        return $this->closeGlimpseWrapper() . $this->originalCompileEndcanany();
+        return $this->closeGlimpseWrapper() . PHP_EOL
+            . $this->originalCompileEndcanany();
     }
 }
