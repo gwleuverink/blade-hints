@@ -48,12 +48,3 @@ composer baseline # generate static analysis baseline
 composer test # run test suite
 composer build # bundle all assets
 ```
-
-- [x] BladeCanStatementsTest
-- [x] BladeCananyStatementsTest
-- [x] BladeCannotStatementsTest
-- [x] BladeIfAuthStatementsTest
-- [x] BladeElseAuthStatementsTest
-- [x] BladeEnvironmentStatementsTest
-- [x] BladeIfGuestStatementsTest
-- [x] BladeElseGuestStatementsTest
