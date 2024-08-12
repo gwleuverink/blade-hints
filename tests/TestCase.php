@@ -20,6 +20,8 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
 
         $this->compiler = new BladeCompiler($this->getFiles(), __DIR__);
+
+        config(['glimpse.enabled' => true]);
     }
 
     protected function getFiles()
