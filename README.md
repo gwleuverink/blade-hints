@@ -52,8 +52,8 @@ composer build # bundle all assets
 - [x] BladeCanStatementsTest
 - [x] BladeCananyStatementsTest
 - [x] BladeCannotStatementsTest
-- [] BladeIfAuthStatementsTest
-- [] BladeElseAuthStatementsTest
+- [x] BladeIfAuthStatementsTest
+- [x] BladeElseAuthStatementsTest
 - [] BladeEnvironmentStatementsTest
 - [] BladeIfGuestStatementsTest
 - [] BladeElseGuestStatementsTest
