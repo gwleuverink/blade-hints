@@ -90,7 +90,7 @@ trait CompilesConditionals
         }
 
         return $this->originalCompileEnv($environments) . PHP_EOL
-            . $this->openGlimpseWrapper('env', 'environment-if');
+            . $this->openGlimpseWrapper("env{$environments}", 'environment-if');
     }
 
     /**
