@@ -4,7 +4,7 @@ Easily spot missing authorization checks in Laravel
 
 ## Features
 
-Mark usages of a variety of different Blade directives on the page, so you can spot missing authorization/auth/env guards
+Mark usages of a variety of different Blade directives on the page, so you can spot missing authorization/auth/env checks
 
 Supported directives:
 
