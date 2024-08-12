@@ -26,6 +26,11 @@ class BladeCompiler extends Compiler
 
     private function openGlimpseWrapper(string $label, string $type = 'authorization-if'): string
     {
+        $label = str($label)
+            ->replace("'", '')
+            ->replace('"', '')
+            ->toString();
+
         return <<< HTML
         <span class="glimpse glimpse__{$type}" data-glimpse-label="{$label}">
         HTML;
