@@ -12,13 +12,23 @@ class ServiceProvider extends BaseServiceProvider
 {
     public function boot()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/glimpse.php', 'glimpse');
+        // Only when using locally
+        if (! $this->app->environment(['local', 'testing'])) {
+
+            $this->publishes([
+                __DIR__ . '/../config/glimpse.php' => base_path('config/glimpse.php'),
+            ], 'glimpse');
+        }
 
         $this->injectAssets();
     }
 
     public function register()
     {
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/glimpse.php', 'glimpse'
+        );
+
         $this->registerBladeCompiler();
     }
 
