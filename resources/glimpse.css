@@ -54,18 +54,6 @@
   box-shadow: inset 0 0 0 1.5px var(--gl-environment-if-color);
 }
 
-/*
-.glimpse.glimpse__environment-else {
-  box-shadow: inset 0 0 0 1.5px var(--gl-environment-else-color);
-}
-*/
-
 .glimpse.glimpse__guest-if {
   box-shadow: inset 0 0 0 1.5px var(--gl-guest-if-color);
 }
-
-/*
-.glimpse.glimpse__guest-else {
-  box-shadow: inset 0 0 0 1.5px var(--gl-guest-else-color);
-}
-*/
