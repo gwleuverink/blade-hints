@@ -15,6 +15,10 @@ class InjectAssets
             return;
         }
 
+        if (! $handled->response->isSuccessful()) {
+            return;
+        }
+
         $html = $handled->response->getContent();
 
         // Skip if request doesn't return a full page
