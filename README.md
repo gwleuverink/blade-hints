@@ -15,7 +15,7 @@ Supported directives:
 - `@env`, `@production`
 - `@auth`, `@guest`
 
-![screenshot](/resources/images/screenshot.jpg)
+<img src="/resources/images/screenshot.jpg" alt="screenshot" style="max-width: 260px" />
 
 <!-- TODO: Display any authorization & authentication middlewares applied page (or any auth/policy check before blade renders), so you can easily spot if the current route doesn't apply appropriate guards -->
 
