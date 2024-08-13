@@ -5,6 +5,10 @@
 
 Easily spot missing authorization checks in Laravel
 
+<div style="max-width: 260px">
+<img src="/resources/images/screenshot.jpg" alt="screenshot" />
+</div>
+
 ## Features
 
 Mark usages of a variety of different Blade directives on the page, so you can spot missing authorization/auth/env checks
@@ -14,8 +18,6 @@ Supported directives:
 - `@can`, `@cannot`, `@canany`
 - `@env`, `@production`
 - `@auth`, `@guest`
-
-<img src="/resources/images/screenshot.jpg" alt="screenshot" style="max-width: 260px" />
 
 <!-- TODO: Display any authorization & authentication middlewares applied page (or any auth/policy check before blade renders), so you can easily spot if the current route doesn't apply appropriate guards -->
 
