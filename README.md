@@ -17,6 +17,12 @@ Supported directives:
 
 <!-- TODO: Display any authorization & authentication middlewares applied page (or any auth/policy check before blade renders), so you can easily spot if the current route doesn't apply appropriate guards -->
 
+## Installation
+
+```bash
+composer require leuverink/blade-hints
+```
+
 ## Configuration
 
 ```php
