@@ -5,9 +5,7 @@
 
 Easily spot missing authorization checks in Laravel
 
-<div style="max-width: 260px">
-<img src="/resources/images/screenshot.jpg" alt="screenshot" />
-</div>
+<img src="/resources/images/screenshot.jpg" alt="screenshot" width="260px" />
 
 ## Features
 
