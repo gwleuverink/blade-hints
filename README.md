@@ -3,7 +3,7 @@
 [![codestyle](https://github.com/gwleuverink/blade-hints/actions/workflows/codestyle.yml/badge.svg)](https://github.com/gwleuverink/blade-hints/actions/workflows/codestyle.yml)
 [![tests](https://github.com/gwleuverink/blade-hints/actions/workflows/tests.yml/badge.svg)](https://github.com/gwleuverink/blade-hints/actions/workflows/tests.yml)
 
-Easily spot missing authorization checks in Laravel
+Easily spot authorization checks in Laravel
 
 <img src="/resources/images/screenshot.jpg" alt="screenshot" width="260px" />
 
