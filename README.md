@@ -15,7 +15,7 @@ Supported directives:
 - `@env`, `@production`
 - `@auth`, `@guest`
 
-![screenshot](/gwleuverink/blade-hints/raw/main/resources/images/screenshot.jpg)
+![screenshot](/resources/images/screenshot.jpg)
 
 <!-- TODO: Display any authorization & authentication middlewares applied page (or any auth/policy check before blade renders), so you can easily spot if the current route doesn't apply appropriate guards -->
 
