@@ -1,5 +1,8 @@
 # Blade Hints
 
+[![codestyle](https://github.com/gwleuverink/blade-hints/actions/workflows/codestyle.yml/badge.svg)](https://github.com/gwleuverink/blade-hints/actions/workflows/codestyle.yml)
+[![tests](https://github.com/gwleuverink/blade-hints/actions/workflows/tests.yml/badge.svg)](https://github.com/gwleuverink/blade-hints/actions/workflows/tests.yml)
+
 Easily spot missing authorization checks in Laravel
 
 ## Features
