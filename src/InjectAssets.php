@@ -68,15 +68,15 @@ class InjectAssets
     protected function theme(): string
     {
         $variables = Arr::toCssStyles([
-            '--gl-authorization-if-color:' . config('blade-hints.authorization_if_color'),
-            '--gl-authorization-else-color:' . config('blade-hints.authorization_else_color'),
+            '--bh-authorization-if-color:' . config('blade-hints.authorization_if_color'),
+            '--bh-authorization-else-color:' . config('blade-hints.authorization_else_color'),
 
-            '--gl-authentication-if-color:' . config('blade-hints.authentication_if_color'),
-            '--gl-authentication-else-color:' . config('blade-hints.authentication_else_color'),
+            '--bh-authentication-if-color:' . config('blade-hints.authentication_if_color'),
+            '--bh-authentication-else-color:' . config('blade-hints.authentication_else_color'),
 
-            '--gl-environment-if-color:' . config('blade-hints.environment_if_color'),
+            '--bh-environment-if-color:' . config('blade-hints.environment_if_color'),
 
-            '--gl-guest-if-color:' . config('blade-hints.guest_if_color'),
+            '--bh-guest-if-color:' . config('blade-hints.guest_if_color'),
         ]);
 
         return ":root { {$variables} }";
