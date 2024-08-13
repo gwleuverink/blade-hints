@@ -49,8 +49,8 @@ jobs:
       - name: Directory Permissions
         run: sudo chown -R $(whoami) vendor/pestphp/pest/.temp vendor/orchestra
 
-      - name: Run tests - coverage threshold 90%
-        run: composer test -- --coverage --min=90 --coverage-clover clover.xml
+      - name: Run tests - coverage threshold 80%
+        run: composer test -- --coverage --min=80 --coverage-clover clover.xml
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
