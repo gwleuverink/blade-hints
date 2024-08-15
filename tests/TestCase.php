@@ -20,8 +20,6 @@ abstract class TestCase extends BaseTestCase
         parent::setUp();
 
         $this->compiler = new BladeCompiler($this->getFiles(), __DIR__);
-
-        config(['blade-hints.enabled' => true]);
     }
 
     protected function getFiles()
