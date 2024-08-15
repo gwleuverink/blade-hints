@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7b479848ae5e6459666bbf35e24b76f7",
+    "content-hash": "f674dfbcf8bc71756f38430ed79ef598",
     "packages": [
         {
             "name": "brick/math",
@@ -7040,16 +7040,16 @@
         },
         {
             "name": "orchestra/testbench",
-            "version": "v9.2.0",
+            "version": "v9.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench.git",
-                "reference": "ccf7c9bdb6b15201a9c91a8cd0d60db721147987"
+                "reference": "6084d0793bae571713e96d48557562bb8276aa7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench/zipball/ccf7c9bdb6b15201a9c91a8cd0d60db721147987",
-                "reference": "ccf7c9bdb6b15201a9c91a8cd0d60db721147987",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/6084d0793bae571713e96d48557562bb8276aa7b",
+                "reference": "6084d0793bae571713e96d48557562bb8276aa7b",
                 "shasum": ""
             },
             "require": {
@@ -7057,8 +7057,8 @@
                 "fakerphp/faker": "^1.23",
                 "laravel/framework": "^11.11",
                 "mockery/mockery": "^1.6",
-                "orchestra/testbench-core": "^9.2",
-                "orchestra/workbench": "^9.1",
+                "orchestra/testbench-core": "^9.3",
+                "orchestra/workbench": "^9.5",
                 "php": "^8.2",
                 "phpunit/phpunit": "^10.5 || ^11.0.1",
                 "symfony/process": "^7.0",
@@ -7089,22 +7089,22 @@
             ],
             "support": {
                 "issues": "https://github.com/orchestral/testbench/issues",
-                "source": "https://github.com/orchestral/testbench/tree/v9.2.0"
+                "source": "https://github.com/orchestral/testbench/tree/v9.3.0"
             },
-            "time": "2024-07-13T07:23:13+00:00"
+            "time": "2024-08-14T06:29:45+00:00"
         },
         {
             "name": "orchestra/testbench-core",
-            "version": "v9.2.3",
+            "version": "v9.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/testbench-core.git",
-                "reference": "405568eb663c4a3d5fc5c94ca7430c6643b9c7ff"
+                "reference": "d66217119f326f82190a3638739a92a985ad73b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/405568eb663c4a3d5fc5c94ca7430c6643b9c7ff",
-                "reference": "405568eb663c4a3d5fc5c94ca7430c6643b9c7ff",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/d66217119f326f82190a3638739a92a985ad73b3",
+                "reference": "d66217119f326f82190a3638739a92a985ad73b3",
                 "shasum": ""
             },
             "require": {
@@ -7180,20 +7180,20 @@
                 "issues": "https://github.com/orchestral/testbench/issues",
                 "source": "https://github.com/orchestral/testbench-core"
             },
-            "time": "2024-08-02T10:12:21+00:00"
+            "time": "2024-08-14T05:55:35+00:00"
         },
         {
             "name": "orchestra/workbench",
-            "version": "v9.4.1",
+            "version": "v9.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orchestral/workbench.git",
-                "reference": "c4d4cb6e17fdd16af250cabfe82906641eefa9c7"
+                "reference": "db7ba7a09d5e3f6bc6cbbea44d58aa18c10ab08f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orchestral/workbench/zipball/c4d4cb6e17fdd16af250cabfe82906641eefa9c7",
-                "reference": "c4d4cb6e17fdd16af250cabfe82906641eefa9c7",
+                "url": "https://api.github.com/repos/orchestral/workbench/zipball/db7ba7a09d5e3f6bc6cbbea44d58aa18c10ab08f",
+                "reference": "db7ba7a09d5e3f6bc6cbbea44d58aa18c10ab08f",
                 "shasum": ""
             },
             "require": {
@@ -7244,9 +7244,9 @@
             ],
             "support": {
                 "issues": "https://github.com/orchestral/workbench/issues",
-                "source": "https://github.com/orchestral/workbench/tree/v9.4.1"
+                "source": "https://github.com/orchestral/workbench/tree/v9.5.0"
             },
-            "time": "2024-08-12T09:49:20+00:00"
+            "time": "2024-08-14T00:24:43+00:00"
         },
         {
             "name": "pestphp/pest",
@@ -7920,16 +7920,16 @@
         },
         {
             "name": "phpmyadmin/sql-parser",
-            "version": "5.9.0",
+            "version": "5.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpmyadmin/sql-parser.git",
-                "reference": "011fa18a4e55591fac6545a821921dd1d61c6984"
+                "reference": "169a9f11f1957ea36607c9b29eac1b48679f1ecc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpmyadmin/sql-parser/zipball/011fa18a4e55591fac6545a821921dd1d61c6984",
-                "reference": "011fa18a4e55591fac6545a821921dd1d61c6984",
+                "url": "https://api.github.com/repos/phpmyadmin/sql-parser/zipball/169a9f11f1957ea36607c9b29eac1b48679f1ecc",
+                "reference": "169a9f11f1957ea36607c9b29eac1b48679f1ecc",
                 "shasum": ""
             },
             "require": {
@@ -7947,8 +7947,7 @@
                 "phpstan/extension-installer": "^1.1",
                 "phpstan/phpstan": "^1.9.12",
                 "phpstan/phpstan-phpunit": "^1.3.3",
-                "phpunit/php-code-coverage": "*",
-                "phpunit/phpunit": "^7.5 || ^8.5 || ^9.5",
+                "phpunit/phpunit": "^8.5 || ^9.6",
                 "psalm/plugin-phpunit": "^0.16.1",
                 "vimeo/psalm": "^4.11",
                 "zumba/json-serializer": "~3.0.2"
@@ -8004,7 +8003,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2024-01-20T20:34:02+00:00"
+            "time": "2024-08-13T19:01:01+00:00"
         },
         {
             "name": "phpstan/phpdoc-parser",
