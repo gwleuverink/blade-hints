@@ -59,3 +59,7 @@ composer baseline # generate static analysis baseline
 composer test # run test suite
 composer build # bundle all assets
 ```
+
+## License
+
+This package is open-source software licensed under the MIT license.
