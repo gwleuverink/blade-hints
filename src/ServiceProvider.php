@@ -2,10 +2,9 @@
 
 namespace Leuverink\BladeHints;
 
-use Illuminate\Support\Facades\Event;
 use Illuminate\View\DynamicComponent;
 use Leuverink\BladeHints\View\BladeCompiler;
-use Illuminate\Foundation\Http\Events\RequestHandled;
+use Leuverink\AssetInjector\Contracts\AssetInjector;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
@@ -49,9 +48,9 @@ class ServiceProvider extends BaseServiceProvider
 
     protected function injectAssets()
     {
-        Event::listen(
-            RequestHandled::class,
-            InjectAssets::class,
+        $this->app->bind(
+            AssetInjector::class,
+            InjectAssets::class
         );
     }
 }

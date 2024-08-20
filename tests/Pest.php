@@ -11,7 +11,7 @@
 |
 */
 
-uses(Tests\TestCase::class)->in('View', 'Feature');
+uses(Tests\TestCase::class)->in('View', 'Integration');
 
 /*
 |--------------------------------------------------------------------------
