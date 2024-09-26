@@ -3,8 +3,8 @@
 namespace Leuverink\BladeHints;
 
 use Illuminate\View\DynamicComponent;
+use Leuverink\AssetInjector\AssetManager;
 use Leuverink\BladeHints\View\BladeCompiler;
-use Leuverink\AssetInjector\Contracts\AssetInjector;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
 class ServiceProvider extends BaseServiceProvider
@@ -48,9 +48,8 @@ class ServiceProvider extends BaseServiceProvider
 
     protected function injectAssets()
     {
-        $this->app->bind(
-            AssetInjector::class,
-            InjectAssets::class
+        AssetManager::register(
+            new InjectAssets
         );
     }
 }

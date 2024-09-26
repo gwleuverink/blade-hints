@@ -1,3 +1,2 @@
 providers:
   - Leuverink\BladeHints\ServiceProvider
-  - Leuverink\AssetInjector\ServiceProvider
